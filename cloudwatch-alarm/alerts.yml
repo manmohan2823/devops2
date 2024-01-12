@@ -1,0 +1,1477 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "A CloudFormation Template to create CloudWatchAlerts "
+
+Resources:
+
+#Whatsapp-box-ec2
+  WhatsappEc2MemoryUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WhatsappEc2MemoryUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: mem_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0a8d1d5409aff33db
+            - Name: ImageId
+              Value: ami-03fa4afc89e4a8a09
+            - Name: InstanceType
+              Value: t2.medium
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  WhatsappEc2CPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WhatsappEc2CPU
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/EC2
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0a8d1d5409aff33db
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  WhatsappEc2DiskUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WhatsappEc2DiskUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: disk_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: path
+              Value: /
+            - Name: InstanceId
+              Value: i-0a8d1d5409aff33db
+            - Name: ImageId
+              Value: ami-03fa4afc89e4a8a09
+            - Name: InstanceType
+              Value: t2.medium
+            - Name: device
+              Value: xvda1
+            - Name: fstype
+              Value: xfs
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#Metabase-box-ec2
+  MetabaseEc2MemoryUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WhatsappEc2MemoryUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: mem_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-03a11e58c2f1b04b3
+            - Name: ImageId
+              Value: ami-052965bf1f8077ab1
+            - Name: InstanceType
+              Value: t4g.xlarge
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  MetabasepEc2CPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: MetabasepEc2CPU
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/EC2
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-03a11e58c2f1b04b3
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+ MetabaseEc2DiskUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: MetabaseEc2DiskUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: disk_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: path
+              Value: /
+            - Name: InstanceId
+              Value: i-0a8d1d5409aff33db
+            - Name: ImageId
+              Value: ami-052965bf1f8077ab1
+            - Name: InstanceType
+              Value: t4g.xlarge
+            - Name: device
+              Value: nvme0n1p1
+            - Name: fstype
+              Value: ext4
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#OpenVpn-box-ec2
+  OpenVpnEc2MemoryUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: OpenVpnEc2MemoryUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: mem_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0ad6deafb6beb7805
+            - Name: ImageId
+              Value: ami-03295590f33a604ae
+            - Name: InstanceType
+              Value: t2.micro
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  OpenVpnEc2CPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: OpenVpnEc2CPU
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/EC2
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0ad6deafb6beb7805
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  OpenVpnEc2DiskUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: OpenVpnEc2DiskUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: disk_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: path
+              Value: /
+            - Name: InstanceId
+              Value: i-0ad6deafb6beb7805
+            - Name: ImageId
+              Value: ami-03295590f33a604ae
+            - Name: InstanceType
+              Value: t2.micro
+            - Name: device
+              Value: xvda1
+            - Name: fstype
+              Value: ext4
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#Graylog-prod-ec2
+  GraylogProdEc2MemoryUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: GraylogProdEc2MemoryUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: mem_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0a777764f56e67e3f
+            - Name: ImageId
+              Value:  ami-059b58112bcee20da
+            - Name: InstanceType
+              Value: c6g.xlarge
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 90
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  GraylogProdEc2CPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: GraylogProdEc2CPU
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/EC2
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0a777764f56e67e3f
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 90
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  GraylogProdEc2DiskUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: GraylogProdEc2DiskUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: disk_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: path
+              Value: /
+            - Name: InstanceId
+              Value: i-0a777764f56e67e3f
+            - Name: ImageId
+              Value:  ami-059b58112bcee20da
+            - Name: InstanceType
+              Value: c6g.xlarge
+            - Name: device
+              Value: nvme0n1p1
+            - Name: fstype
+              Value: ext4
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 90
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#Autoscaling-Wordpress-prod-ec2
+  WordpressServer1Ec2MemoryUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WordpressServer1Ec2MemoryUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: mem_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0624bb27d02bf8197
+            - Name: ImageId
+              Value:  ami-05039df75493cdaad
+            - Name: InstanceType
+              Value: c6gd.xlarge
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  WordpressServer1Ec2CPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WordpressServer1Ec2CPU
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/EC2
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0624bb27d02bf8197
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  WordpressServer1Ec2DiskUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WordpressServer1Ec2DiskUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: disk_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: path
+              Value: /
+            - Name: InstanceId
+              Value: i-0624bb27d02bf8197
+            - Name: ImageId
+              Value:  ami-05039df75493cdaad
+            - Name: InstanceType
+              Value: c6gd.xlarge
+            - Name: device
+              Value: nvme0n1p1
+            - Name: fstype
+              Value: ext4
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#Autoscaling-Wordpress-prod-ec2
+  WordpressServer2Ec2MemoryUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WordpressServer2Ec2MemoryUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: mem_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-02b360ee7ef033b31
+            - Name: ImageId
+              Value:  ami-05039df75493cdaad
+            - Name: InstanceType
+              Value: c6gd.xlarge
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  WordpressServer2Ec2CPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WordpressServer2Ec2CPU
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/EC2
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-02b360ee7ef033b31
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  WordpressServer2Ec2DiskUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WordpressServer2Ec2DiskUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: disk_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: path
+              Value: /
+            - Name: InstanceId
+              Value:i-02b360ee7ef033b31
+            - Name: ImageId
+              Value:  ami-05039df75493cdaad
+            - Name: InstanceType
+              Value: c6gd.xlarge
+            - Name: device
+              Value: nvme0n1p1
+            - Name: fstype
+              Value: ext4
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#Myprofile-wrappers-ec2
+  MyprofilewrappersEc2MemoryUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: MyprofilewrappersEc2MemoryUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: mem_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-09c5ae992092311bb
+            - Name: ImageId
+              Value:   ami-097bd811c38cb00fe
+            - Name: InstanceType
+              Value: c6g.large
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  MyprofilewrappersEc2CPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: MyprofilewrappersEc2CPU
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/EC2
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-09c5ae992092311bb
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  MyprofilewrappersEc2DiskUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: AutoscalingWordpressEc2DiskUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: disk_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: path
+              Value: /
+            - Name: InstanceId
+              Value: i-09c5ae992092311bb
+            - Name: ImageId
+              Value:  ami-097bd811c38cb00fe
+            - Name: InstanceType
+              Value: c6g.large
+            - Name: device
+              Value: nvme0n1p1
+            - Name: fstype
+              Value: ext4
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#Chart-prod-ec2
+  ChartprodEc2MemoryUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: ChartprodEc2MemoryUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: mem_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0d594acc9ecad38e4
+            - Name: ImageId
+              Value: ami-0b6581fde9e6e7779
+            - Name: InstanceType
+              Value: c6gd.large
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  ChartprodEc2CPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: ChartprodEc2CPU
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/EC2
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0d594acc9ecad38e4
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  ChartprodEc2DiskUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: ChartprodEc2DiskUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: disk_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: path
+              Value: /
+            - Name: InstanceId
+              Value:  i-0d594acc9ecad38e4
+            - Name: ImageId
+              Value:  ami-0b6581fde9e6e7779
+            - Name: InstanceType
+              Value: c6gd.large
+            - Name: device
+              Value: nvme0n1p1
+            - Name: fstype
+              Value: ext4
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#Invest-prod-ec2
+  InvestSSOEc2MemoryUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: InvestSSOEc2MemoryUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: mem_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0a32c2830b748bbaf
+            - Name: ImageId
+              Value: ami-016c8053b73707138
+            - Name: InstanceType
+              Value: c6gd.xlarge
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  InvestSSOEc2CPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: InvestSSOEc2CPU
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/EC2
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0a32c2830b748bbaf
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  InvestSSOEc2DiskUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: InvestSSOEc2DiskUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: disk_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: path
+              Value: /
+            - Name: InstanceId
+              Value:  i-0a32c2830b748bbaf
+            - Name: ImageId
+              Value:  ami-016c8053b73707138
+            - Name: InstanceType
+              Value: c6gd.xlarge
+            - Name: device
+              Value: nvme0n1p1
+            - Name: fstype
+              Value: ext4
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#Onboarding-prod-ec2
+  OnboardingInvestEc2MemoryUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: OnboardingInvestEc2MemoryUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: mem_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0d975c442579151ad
+            - Name: ImageId
+              Value: ami-0967934f830ba2c89
+            - Name: InstanceType
+              Value: c6g.xlarge
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  OnboardingInvestEc2CPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: OnboardingInvestEc2CPU
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/EC2
+        Statistic: Average
+        Dimensions:
+            - Name: InstanceId
+              Value: i-0d975c442579151ad
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  OnboardingInvestEc2DiskUsage:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: OnboardingInvestEc2DiskUsage
+        AlarmDescription: " # ! EC2 ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: disk_used_percent
+        Namespace: CWAgent
+        Statistic: Average
+        Dimensions:
+            - Name: path
+              Value: /
+            - Name: InstanceId
+              Value:  i-0d975c442579151ad
+            - Name: ImageId
+              Value:  ami-0967934f830ba2c89
+            - Name: InstanceType
+              Value: c6g.xlarge
+            - Name: device
+              Value: nvme0n1p1
+            - Name: fstype
+              Value: ext4
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 805
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#PROD-CENTRALIZED-RDS-AUDIT
+  SSOBauCentralizedAuditRDSCPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOBauCentralizedAuditRdsCPU
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura-prod-centralized-rds-audit
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanThreshold
+        TreatMissingData: missing
+
+  SSOBauCentralizedAuditFreeStorageSpace:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOBauCentralizedAuditFreeStorageSpace
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeStorageSpace
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura-prod-centralized-rds-audit
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  SSOBauCentralizedAuditRDSFreeableMemory:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOBauCentralizedAuditRDSFreeableMemory
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeableMemory
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura-prod-centralized-rds-audit
+        Period: 60
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#ventura-prod-mysql-opensection
+  MysqlWordpressRDSCPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: MysqlWordpressRDSCPU
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura-prod-mysql-opensection
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanThreshold
+        TreatMissingData: missing
+
+  MysqlWordpressRDSFreeStorageSpace:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: MysqlWordpressRDSFreeStorageSpace
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeStorageSpace
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura-prod-mysql-opensection
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  MysqlWordpressRDSFreeableMemory:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: MysqlWordpressRDSFreeableMemory
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeableMemory
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura-prod-mysql-opensection
+        Period: 60
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#ventura-prod-rds-ipo-opensection
+  IPOOpensectionRDSCPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: IPOOpensectionRDSCPU
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura-prod-rds-ipo-opensection
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanThreshold
+        TreatMissingData: missing
+
+  IPOOpensectionRDSFreeStorageSpace:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: IPOOpensectionRDSFreeStorageSpace
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeStorageSpace
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura-prod-rds-ipo-opensection
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  IPOOpensectionRDSFreeableMemory:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: IPOOpensectionRDSFreeableMemory
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeableMemory
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura-prod-rds-ipo-opensection
+        Period: 60
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#ventura1-prod-postgres-rds-audit
+  SSOBauAuditRDSCPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOBauAuditRDSCPU
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-audit
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanThreshold
+        TreatMissingData: missing
+
+  SSOBauAuditRDSFreeStorageSpace:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOBauAuditRDSFreeStorageSpace
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeStorageSpace
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-audit
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  SSOBauAuditRDSFreeableMemory:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOBauAuditRDSFreeableMemory
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeableMemory
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-audit
+        Period: 60
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#ventura1-prod-postgres-rds-referral-mgmt
+  ReferralmgmtRDSCPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: ReferralmgmtRDSCPU
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-referral-mgmt
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanThreshold
+        TreatMissingData: missing
+
+  ReferralmgmtRDSFreeStorageSpace:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: ReferralmgmtRDSFreeStorageSpace
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeStorageSpace
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-referral-mgmt
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  ReferralmgmtRDSFreeableMemory:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: ReferralmgmtRDSFreeableMemory
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeableMemory
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-referral-mgmt
+        Period: 60
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#ventura1-prod-postgres-rds-sso
+  SSOBauRDSCPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOBauRDSCPU
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-sso
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanThreshold
+        TreatMissingData: missing
+
+  SSOBauRDSFreeStorageSpace:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOBauRDSFreeStorageSpace
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeStorageSpace
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-sso
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  SSOBauRDSFreeableMemory:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOBauRDSFreeableMemory
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeableMemory
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-sso
+        Period: 60
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#ventura1-prod-postgres-rds-sso-audit-mvp
+  SSOMvpAuditRDSCPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOMvpAuditRDSCPU
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-sso-audit-mvp
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanThreshold
+        TreatMissingData: missing
+
+  SSOMvpAuditRDSFreeStorageSpace:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOMvpAuditRDSFreeStorageSpace
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeStorageSpace
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-sso-audit-mvp
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  SSOMvpAuditRDSFreeableMemory:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOMvpAuditRDSFreeableMemory
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeableMemory
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-sso-audit-mvp
+        Period: 60
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+#ventura1-prod-postgres-rds-sso-mvp
+  SSOMvpRDSCPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOMvpRDSCPU
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-sso-mvp
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanThreshold
+        TreatMissingData: missing
+
+  SSOMvpRDSFreeStorageSpace:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOMvpRDSFreeStorageSpace
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeStorageSpace
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-sso-mvp
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  SSOMvpRDSFreeableMemory:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: SSOMvpRDSFreeableMemory
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeableMemory
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-sso-mvp
+        Period: 60
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+
+#ventura1-prod-postgres-rds-whatsapp
+
+
+  WhatsappRDSCPU:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WhatsappRDSCPU
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: CPUUtilization
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-whatsapp
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 85
+        ComparisonOperator: GreaterThanThreshold
+        TreatMissingData: missing
+
+  WhatsappRDSFreeStorageSpace:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WhatsappRDSFreeStorageSpace
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeStorageSpace
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-whatsapp
+        Period: 300
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing
+
+  WhatsappRDSFreeableMemory:  
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmName: WhatsappRDSFreeableMemory
+        AlarmDescription: " # ! RDS ! Alerts ! PROD"
+        ActionsEnabled: true
+        OKActions: []
+        AlarmActions:
+            - arn:aws:sns:ap-south-1:661466241750:ventura1-prod-devops-sns-topic
+        InsufficientDataActions: []
+        MetricName: FreeableMemory
+        Namespace: AWS/RDS
+        Statistic: Average
+        Dimensions:
+            - Name: DBInstanceIdentifier
+              Value: ventura1-prod-postgres-rds-whatsapp
+        Period: 60
+        EvaluationPeriods: 5
+        DatapointsToAlarm: 3
+        Threshold: 15
+        ComparisonOperator: LessThanOrEqualToThreshold
+        TreatMissingData: missing%
